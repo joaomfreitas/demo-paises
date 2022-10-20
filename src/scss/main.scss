@@ -1,0 +1,325 @@
+//Criar breakpoint acima de 768px
+
+$screen-md-min: 768px;
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+//Lista de variaveis
+$mainRed: #E92720;
+$mainWhite: #FAFCFD;
+$mainGrey: #E3E3E3;
+$mainBlack: #262626;
+$fontSizeS: 12px;
+$fontSizeM: 14px;
+
+body {
+  background-color: $mainWhite;
+  font-family: 'Montserrat';
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: $mainGrey;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  margin: 20px auto;
+
+  .container {
+    .left-half {
+      flex: 2;
+      padding: 1rem;
+    }
+
+    .right-half {
+      flex: 1;
+      padding: 1rem;
+
+      img {
+        float: right;
+        margin-right: 30px;
+        max-width: 75px
+      }
+    }
+  }
+
+
+  @include md {
+    width: 70%;
+  }
+
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.search-bar {
+  padding: 6px;
+  font-size: $fontSizeM;
+  margin: 0 10px 0 auto;
+  border: solid $mainGrey 2px;
+  min-width: 200px;
+
+  @include md {
+    flex: 1;
+  }
+}
+
+.sort-by {
+  font-size: $fontSizeM;
+  margin: 10px auto 0;
+  align-items: start;
+  justify-content: start;
+
+  @include md {
+    flex: 1;
+    margin-top: 0;
+  }
+}
+
+
+.btn-sort {
+  padding: 6px;
+  color: $mainBlack;
+  cursor: pointer;
+  border: solid $mainGrey 2px;
+  background-color: $mainWhite;
+}
+
+
+.btn-picked {
+  padding: 6px;
+  color: $mainWhite;
+  border: solid $mainGrey 2px;
+  background-color: $mainRed;
+}
+
+.box {
+  width: 90%;
+  margin: 20px auto;
+  display: block;
+  align-items: start;
+
+  @include md {
+    width: 70%;
+    display: flex;
+  }
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 100%;
+
+
+  img {
+    vertical-align: middle;
+    width: 100%;
+    opacity: 1;
+  }
+
+  @include md {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+.country_images {
+  width: 90%;
+  margin: 0 auto 20px;
+}
+
+.country_information {
+  width: 90%;
+  margin: 20px auto;
+}
+
+h2.no-span {
+  display: table;
+  white-space: nowrap;
+  max-width: 100%;
+  margin: 10px;
+  font-size: 1rem;
+
+  &:before,
+  &:after {
+    border-top: 2px solid $mainBlack;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 0.5em;
+    width: 8%;
+  }
+
+  &:before {
+    right: 1.5%;
+    width: 10%
+  }
+
+  &:after {
+    left: 1.5%;
+    width: 82%
+  }
+
+  @include md {
+    &:before {
+      right: 1%;
+      width: 10%
+    }
+
+    &:after {
+      left: 1%;
+      width: 100%
+    }
+
+    font-size: 1.5rem;
+  }
+}
+
+.content {
+  background-color: $mainGrey;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  margin: 20px auto;
+
+  @include md {
+    width: 80%;
+  }
+
+}
+
+.images:hover {
+  cursor: pointer;
+  position: relative;
+  opacity: 0.9;
+}
+
+
+#myImg:hover {
+  opacity: 0.7;
+}
+
+//MODAL
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  padding-top: 25px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  overflow-y: initial !important;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 80vw;
+  overflow-y: auto;
+  pointer-events: initial;
+
+  @include md {
+    width: auto;
+    height: 90vh;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+//CLOSE MODAL
+
+.sub-font {
+  font-size: $fontSizeM;
+  color: $mainBlack;
+}
+
+
+.country_information h4 {
+  color: $mainRed;
+}
+
+.image-flag {
+  justify-self: center;
+}
+
+.content-reverse {
+  .left-half {
+    padding: 1rem;
+    text-align: center;
+
+    img {
+      width: 30%;
+      height: auto;
+    }
+  }
+
+  .right-half {
+    padding: 1rem;
+
+  }
+
+  @include md {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+
+    .left-half {
+      flex: 1;
+
+      img {
+        width: 60%;
+      }
+    }
+
+    .right-half {
+      flex: 4;
+    }
+  }
+}
+
+.back-homepage {
+  width: 90%;
+  margin: 20px auto;
+
+  @include md {
+    width: 80%
+  }
+}
